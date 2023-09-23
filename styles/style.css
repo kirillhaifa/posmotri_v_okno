@@ -16,6 +16,9 @@ html {
   background-color: #1b1919;
   inline-size: 1200px;
   block-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1,
@@ -37,50 +40,44 @@ ol {
   list-style: none;
 }
 
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .content {
   display: flex;
   align-items: flex-end;
   gap: 30px;
-  width: 1140px;
-  height: 534px;
+  inline-size: 1140px;
+  block-size: 534px;
   margin: auto;
 }
 
 .result__video-container {
   position: relative;
-  width: 711px;
-  height: 386px;
+  inline-size: 711px;
+  block-size: 386px;
+  margin-bottom: 15px;
 }
 
 .result__video {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .search-form {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-top: 15px;
 }
 
 .search-form__fieldset {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  inline-size: fit-content;
   border: none;
 }
 
 .search-form__fieldset-title {
   font-size: 18px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   color: #fff;
   font-family: Fira Sans Condensed;
   font-weight: 400;
@@ -88,8 +85,8 @@ ol {
 }
 
 .search-form__textfield {
-  width: 225px;
-  height: 29px;
+  inline-size: 225px;
+  block-size: 29px;
   border-top: 1px solid #fff;
   border-right: none;
   border-bottom: 1px solid #fff;
@@ -100,8 +97,6 @@ ol {
   font-family: Fira Sans Condensed;
   font-size: 18px;
 }
-
-
 
 .search-form__textfield:active {
   border: 1px solid #fff;
@@ -114,16 +109,18 @@ ol {
   outline: none;
 }
 
-.search-form__label:has(:focus) {
+.search-form__label:has(:focus-visible) {
+  /*правило работает корректно для чекбоксов, 
+  но для textfield срабатывает как в состоянии focus,
+  так и в состоянии focus-visible в браузерах на Chromuim. 
+  активно обсуждалось в чате курса.
+  насколько я понял, решения без применения JS нет */
   outline: 1px solid #fff;
   outline-offset: 1px;
-  padding: 1px;
   color: rgba(255, 255, 255, 0.7);
   font-family: Fira Sans Condensed;
   font-size: 18px;
 }
-
-
 
 .search-form__checkbox-list {
   display: flex;
@@ -135,8 +132,8 @@ ol {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 19px;
-  height: 19px;
+  inline-size: 19px;
+  block-size: 19px;
   border: 1px solid #fff;
   vertical-align: middle;
   background-color: transparent;
@@ -144,8 +141,8 @@ ol {
 
 input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   content: "";
-  width: 15px;
-  height: 15px;
+  inline-size: 15px;
+  block-size: 15px;
   background-color: #ffffff;
 }
 
@@ -162,8 +159,8 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 194px;
-  height: 34px;
+  inline-size: 194px;
+  block-size: 34px;
   border: 1px solid #fff;
   color: #fff;
   font-family: Fira Sans Condensed;
@@ -185,28 +182,25 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 
 .content__list {
   position: relative;
-  width: 400px;
-  height: 296px;
+  inline-size: 400px;
+  block-size: 296px;
   overflow: auto;
   align-self: flex-start;
-}
-
-/*скролл бар в хром отображается не такой как на макете, 
-к тому же влияет на размеры.
-в тз ничего о скролбарах не скаазано, как в и теории спринта. 
-поэтому скрол просто скрыт*/
-.content__list::-webkit-scrollbar {
-  display: none;
-}
-
-.content__list {
+  /*скролл бар в хром отображается не такой как на макете, 
+  к тому же влияет на размеры.
+  в тз ничего о скролбарах не скаазано, как в и теории спринта. 
+  поэтому скрол просто скрыт*/
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+.content__list::-webkit-scrollbar {
+  display: none;
+}
+
 .content__details {
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .title {
@@ -219,17 +213,22 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   text-transform: uppercase;
 }
 
-.content__card-link_current {
-  background-color: #545050;
+.content__card-link {
+  text-decoration: none;
+  display: block;
+  margin: 3px;
 }
 
 .content__list-item:not(:last-child) {
   margin-bottom: 30px;
 }
 
-.content__card-link {
-  text-decoration: none;
-  display: block;
+.content__card-link:focus {
+  outline: 1px solid #ffffff;
+}
+
+.content__card-link_current {
+  background-color: #545050;
 }
 
 .content__video-card {
@@ -247,15 +246,15 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   background: #545050;
 }
 
-
-
 .content__video-card-description-container {
-  width: 100%;
   flex: 1;
 }
 
 .content__video-card-title {
   margin-bottom: 6px;
+  margin-top: 6px;
+  /* margin-top: 6px задан, тк иначе черточка и точки у 
+  "й" и "ё" ломает обводку для состояния focus*/
   color: #fff;
   font-family: Oswald;
   font-weight: 700;
@@ -275,12 +274,12 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
+  inline-size: 194px;
   height: 103px;
 }
 
 .more-button {
-  width: 100%;
+  inline-size: 100%;
 }
 
 .visually-hidden {
