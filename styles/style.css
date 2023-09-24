@@ -79,7 +79,7 @@ ol {
   font-size: 18px;
   margin-bottom: 5px;
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
 }
@@ -94,14 +94,14 @@ ol {
   background: transparent;
   appearance: none;
   color: rgba(255, 255, 255, 0.7);
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
 }
 
 .search-form__textfield:active {
   border: 1px solid #fff;
   color: rgba(255, 255, 255, 0.7);
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
 }
 
@@ -110,16 +110,17 @@ ol {
 }
 
 .search-form__label:has(:focus-visible) {
-  /*правило работает корректно для чекбоксов, 
-  но для textfield срабатывает как в состоянии focus,
-  так и в состоянии focus-visible в браузерах на Chromuim. 
-  активно обсуждалось в чате курса.
-  насколько я понял, решения без применения JS нет */
   outline: 1px solid #fff;
   outline-offset: 1px;
   color: rgba(255, 255, 255, 0.7);
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
+}
+
+.search-form__label:has(.search-form__checkbox):hover {
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  text-underline-offset: 3px;
 }
 
 .search-form__checkbox-list {
@@ -139,7 +140,7 @@ ol {
   background-color: transparent;
 }
 
-input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
+.search-form__checkbox:checked ~ .search-form__pseudo-checkbox::before {
   content: "";
   inline-size: 15px;
   block-size: 15px;
@@ -163,12 +164,18 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   block-size: 34px;
   border: 1px solid #fff;
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
   font-size: 18px;
   text-align: center;
   background: transparent;
   cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  text-underline-offset: 3px;
 }
 
 .button:active {
@@ -185,11 +192,6 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   inline-size: 400px;
   block-size: 296px;
   overflow: auto;
-  align-self: flex-start;
-  /*скролл бар в хром отображается не такой как на макете, 
-  к тому же влияет на размеры.
-  в тз ничего о скролбарах не скаазано, как в и теории спринта. 
-  поэтому скрол просто скрыт*/
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -232,10 +234,6 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   margin-bottom: 30px;
 }
 
-.content__card-link:focus {
-  outline: 1px solid #ffffff;
-}
-
 .content__card-link_current {
   background-color: #545050;
 }
@@ -255,6 +253,10 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
   background: #545050;
 }
 
+.content__card-link:focus {
+  outline: 1px solid #ffffff;
+}
+
 .content__video-card-description-container {
   flex: 1;
 }
@@ -262,8 +264,6 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 .content__video-card-title {
   margin-bottom: 6px;
   margin-top: 6px;
-  /* margin-top: 6px задан, тк иначе черточка и точки у 
-  "й" и "ё" ломает обводку для состояния focus*/
   color: #fff;
   font-family: Oswald;
   font-weight: 700;
@@ -275,7 +275,7 @@ input[type="checkbox"]:checked ~ .search-form__pseudo-checkbox::before {
 
 .content__video-card-description {
   color: #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
   font-size: 18px;
   font-style: normal;
