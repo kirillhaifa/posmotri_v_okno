@@ -182,7 +182,7 @@ ol {
   background: #545050;
 }
 
-.button:focus {
+.button:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 1px;
 }
@@ -220,7 +220,7 @@ ol {
   font-family: Oswald;
   font-size: 75px;
   font-weight: 700;
-  line-height: 94%; 
+  line-height: 94%;
   text-transform: uppercase;
 }
 
@@ -228,6 +228,20 @@ ol {
   text-decoration: none;
   display: block;
   margin: 3px;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  text-underline-offset: 3px;
+}
+
+.content__card-link:active {
+  background: #545050;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #ffffff;
 }
 
 .content__list-item:not(:last-child) {
@@ -241,20 +255,6 @@ ol {
 .content__video-card {
   display: flex;
   flex-wrap: wrap;
-}
-
-.content__video-card:hover {
-  text-decoration: underline;
-  text-decoration-color: #fff;
-  text-underline-offset: 3px;
-}
-
-.content__video-card:active {
-  background: #545050;
-}
-
-.content__card-link:focus {
-  outline: 1px solid #ffffff;
 }
 
 .content__video-card-description-container {
